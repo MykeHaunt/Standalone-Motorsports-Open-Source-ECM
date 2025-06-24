@@ -11,47 +11,117 @@
 
 # [FOME: Free Open Motorsports ECU](https://www.fome.tech/)
 
-Welcome to FOME, a project intended to provide OEM quality open source engine controls and [free software](https://www.fsf.org/about/what-is-free-software) with a focus on user-friendly design, stability and ease of use. 
+# <span style="color:#1E90FF">Standalone Motorsports Open Source ECM</span>
 
-FOME intends to narrow the gap between the features and functions seen on modern OEM engine control systems and that expected from stand-alone engine control systems. At the same time FOME intends to improve the ease of working with these systems and help provide access to the learning resources needed to understand and tune engines effectively.
+The <span style="color:#1E90FF">Standalone Motorsports Open Source ECM</span> is a fully open-source engine control module platform designed for high-performance racing engines. Derived from the <span style="color:#8A2BE2">FOME</span> project, it provides OEM-level control and customization.
 
-FOME came about from a desire to enhance the user experience of rusEFI that was shared by a number of members of that project; over time it became apparent that the best way to achieve this goal was to begin working on a fork. Thus at the start of 2023 FOME was founded.
+## <span style="color:#228B22">Key Features</span>
 
-The founding members would like to express gratitude towards rusEFI for its ground breaking work and the innovation it has brought to the ECU market.
+- <span style="color:#FF8C00"><b>Fuel Injection</b></span>: Supports sequential and batch injection (up to 12 injectors), 3D VE tables, enrichment, decel fuel cut, and closed-loop AFR using wideband O₂ sensors.
+- <span style="color:#DC143C"><b>Ignition Control</b></span>: Wasted spark and fully sequential up to 12 cylinders. Includes base, cranking, and idle timing maps, multi-spark, boost retard, dwell settings, and launch control.
+- <span style="color:#20B2AA"><b>Sensors</b></span>: Interfaces for crank/cam (VR/Hall), MAP, TPS, CLT, IAT, oil/fuel pressure, flex-fuel, knock sensors, and more. ~10 analog inputs plus thermistor channels.
+- <span style="color:#FFD700"><b>Outputs</b></span>: Controls injectors, ignition coils, ETB, fans, pumps, and relays via low/high-side drivers and PWM outputs.
+- <span style="color:#8B008B"><b>Communication</b></span>: CAN (1 Mbit/s), USB (virtual COM), UART, SPI/I²C. Data logging via SD card, live telemetry, and integration with TunerStudio and FOME Console.
+- <span style="color:#4682B4"><b>Configuration</b></span>: Real-time tuning, sensor calibration, multi-dimensional maps, closed-loop strategies, and Lua scripting engine for custom algorithms.
+- <span style="color:#B22222"><b>Safety</b></span>: Includes rev/boost limiters, fuel/oil pressure shutdown, fault handling with LEDs and limp modes, and debug streaming.
 
-At present FOME shares a large amount of its core with the rusEFI project and most rusEFI boards are compatible with the FOME software; this is likely something that will continue to diverge over time, meaning full compatibility with older RE hardware cannot be guaranteed.
+## <span style="color:#228B22">System Architecture</span>
 
-# User Documentation
+- <span style="color:#1E90FF"><b>Firmware</b></span>: Runs on STM32F4/F7 ARM Cortex-M with a deterministic main loop. Sensor acquisition, fuel/spark calculations, and actuator commands occur every control cycle.
+- <span style="color:#DC143C"><b>Timing</b></span>: Precise injector/spark timing via hardware timers synchronized to crank position. Lower-priority tasks like logging run asynchronously.
+- <span style="color:#8A2BE2"><b>Extensibility</b></span>: Lua scripts can manipulate sensor/actuator values in each onTick cycle.
 
-Online and offline (PDF) versions of the user manual available here: https://wiki.fome.tech/
+## <span style="color:#228B22">Hardware Requirements</span>
 
-# What Do We Have Here?
- * [Firmware](/firmware) - Source code for open source engine control unit for stm32 chips
- * [FOME console](/java_console) - ECU debugging/development software
- * [Simulator](/simulator) - Windows or Linux version of firmware allows exploration without any hardware
- * [Unit Tests](/unit_tests) - Unit tests of firmware
- * [Misc tools](/java_tools) - Misc development utilities
- * [misc/Jenkins](/misc/jenkins) - Continuous integration scripts
+- <span style="color:#1E90FF"><b>MCU</b></span>: STM32F4/F7 with CAN, USB/UART, high-speed ADCs, timers, and sufficient I/O.
+- <span style="color:#20B2AA"><b>Inputs</b></span>: VR/Hall crank & cam, analog sensors (MAP, TPS, IAT, CLT), digital switches (clutch, AC, neutral), flex-fuel, wheel speed, O₂ sensors.
+- <span style="color:#FFD700"><b>Outputs</b></span>: Injector drivers, ignition coils, ETB PWM, fan/pump relays, logic outputs, CAN stream.
+- <span style="color:#8B008B"><b>Expansion</b></span>: SPI/I²C for additional sensors or modules.
 
-# External Links
+## <span style="color:#228B22">Setup & Tuning</span>
 
- * [Wiki](https://wiki.fome.tech/)
- * [Forum](https://www.fome.tech/forum)
- * [Discord](https://discord.gg/EEg2fbhQD4)
- * [Facebook](https://www.facebook.com/fome.tech)
-<!--
- * [YouTube](https://www.youtube.com/)
--->
+- <span style="color:#4682B4"><b>Build</b></span>: Uses <span style="color:#8A2BE2">gcc-arm-none-eabi</span>. Build via Make or STM32CubeIDE. Flash with FOME Console, STM32CubeProgrammer, or dfu-util.
+- <span style="color:#4682B4"><b>Tuning</b></span>: Configure fuel and ignition maps, calibrate sensors, tune PID for idle and ETB, set limiters and enable closed-loop AFR. Use TunerStudio/FOME Console.
 
-# Contributors
+## <span style="color:#228B22">Operation</span>
 
-This project exists thanks to all the people who contribute their time, expertise, and testing.
+- <span style="color:#1E90FF"><b>Start-Up</b></span>: Bench test → install → crank → tune. Monitor AFR, temp, RPM, and knock.
+- <span style="color:#FFD700"><b>Live Tuning</b></span>: On-the-fly edits to tables. Real-time data via CAN or USB. Logs to SD or external logger.
+- <span style="color:#B22222"><b>Diagnostics</b></span>: LEDs indicate faults. Debug Mode exposes internal states. Fault codes shown in software.
+- <span style="color:#B22222"><b>Safety</b></span>: CRITICAL LED lights on major faults. ECU cuts fuel/spark on sync loss, overboost, etc.
 
-If you'd like to get involved, see [contributing](CONTRIBUTING.md).
+## <span style="color:#228B22">Development & Contribution</span>
 
-## Development
+- <span style="color:#4682B4"><b>Toolchain</b></span>: gcc-arm-none-eabi, Java JDK, Make, CMake. Use GitHub for contributions.
+- <span style="color:#4682B4"><b>Standards</b></span>: Modular code, real-time safe. Write unit tests and documentation. All code under GPLv3+.
 
-Refer to [firmware/DEVELOPER.md](firmware/DEVELOPER.md) for details on building FOME firmware.
+## <span style="color:#228B22">Credits</span>
+
+- <span style="color:#8A2BE2"><b>Based On</b></span>: FOME and rusEFI
+- <span style="color:#8A2BE2"><b>Maintainer</b></span>: MykeHaunt
+- <span style="color:#8A2BE2"><b>License</b></span>: GPLv3+
+
+## <span style="color:#228B22">Diagrams</span>
+
+### <span style="color:#1E90FF">System Architecture Diagram</span>
+
+```plaintext
++----------------------------+
+|        Engine Sensors      |
+| (MAP, TPS, CLT, Crank, Cam)|
++-------------+--------------+
+              |
+              v
+     +------------------+
+     |   ECM Firmware    |
+     |  (STM32F4/F7 MCU) |
+     +--------+---------+
+              |
+     +--------+---------+
+     |  Fuel & Ignition  |
+     |    Controllers     |
+     +--------+---------+
+              |
+   +----------+-----------+
+   | Injector | Coil Ctrl |
+   | Drivers  | (Spark)   |
+   +----------+-----------+
+              |
++-------------+-------------+
+|      Engine Actuators      |
+|  (Injectors, Coils, ETB)   |
++----------------------------+
+```
+
+### <span style="color:#1E90FF">Tuning Workflow</span>
+
+```plaintext
++------------------+
+|   Flash Firmware  |
++--------+---------+
+         |
+         v
++--------+---------+
+|  Connect ECU via  |
+|  FOME Console/TS  |
++--------+---------+
+         |
+         v
++--------+---------+
+| Calibrate Sensors |
++--------+---------+
+         |
+         v
++--------+---------+
+| Set Fuel/Ign Maps |
++--------+---------+
+         |
+         v
++--------+---------+
+| Tune on Dyno/Road |
++------------------+
+```
+
 
 # Release Notes
 
