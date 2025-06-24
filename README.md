@@ -9,7 +9,7 @@
 
 </div>
 
-# [FOME: Free Open Motorsports ECU](https://www.fome.tech/)
+# [Free Open Motorsports ECU](https://www.fome.tech/)
 
 # <span style="color:#1E90FF">Standalone Motorsports Open Source ECM</span>
 
