@@ -2,10 +2,19 @@
 
 <b>GPL open-source ECU</b>
 
-[![Release](https://img.shields.io/github/v/release/FOME-Tech/fome-fw?style=flat)](https://github.com/FOME-Tech/fome-fw/releases/latest) ![Last Commit](https://img.shields.io/github/last-commit/FOME-Tech/fome-fw?style=flat)
-[![Unit Tests](https://img.shields.io/github/actions/workflow/status/FOME-Tech/fome-fw/build-unit-tests.yaml?label=Unit%20Tests&branch=master)](https://github.com/FOME-Tech/fome-fw/actions/workflows/build-unit-tests.yaml)
-![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/FOME-Tech/fome-fw/latest?color=blueviolet&label=Commits%20Since%20Release)
-[![FOME Discord](https://img.shields.io/discord/1060875162892898324?label=Discord&logo=Discord)](https://discord.gg/EEg2fbhQD4)
+# Standalone-Motorsports-Open-Source-ECM
+
+![Build](https://github.com/MykeHaunt/Standalone-Motorsports-Open-Source-ECM/actions/workflows/conda-package.yml/badge.svg)
+![Python](https://img.shields.io/badge/python-3.7%2B-blue.svg)
+![License](https://img.shields.io/github/license/MykeHaunt/Standalone-Motorsports-Open-Source-ECM)
+![Status](https://img.shields.io/badge/status-Beta-blue.svg)
+![Last Commit](https://img.shields.io/github/last-commit/MykeHaunt/Standalone-Motorsports-Open-Source-ECM)
+![Contributors](https://img.shields.io/github/contributors/MykeHaunt/Standalone-Motorsports-Open-Source-ECM)
+![Issues](https://img.shields.io/github/issues/MykeHaunt/Standalone-Motorsports-Open-Source-ECM)
+![Stars](https://img.shields.io/github/stars/MykeHaunt/Standalone-Motorsports-Open-Source-ECM?style=social)
+![Forks](https://img.shields.io/github/forks/MykeHaunt/Standalone-Motorsports-Open-Source-ECM?style=social)
+
+> **WORK IN PROGRESS BY: H. Pandit**
 
 </div>
 
