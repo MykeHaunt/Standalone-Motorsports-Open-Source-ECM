@@ -1,9 +1,7 @@
 <div align="center">
 
 <b>GPL open-source ECU</b>
-
-# Standalone-Motorsports-Open-Source-ECM
-
+> **WORK IN PROGRESS BY: H. Pandit**
 ![Build](https://github.com/MykeHaunt/Standalone-Motorsports-Open-Source-ECM/actions/workflows/conda-package.yml/badge.svg)
 ![Python](https://img.shields.io/badge/python-3.7%2B-blue.svg)
 ![License](https://img.shields.io/github/license/MykeHaunt/Standalone-Motorsports-Open-Source-ECM)
@@ -13,8 +11,6 @@
 ![Issues](https://img.shields.io/github/issues/MykeHaunt/Standalone-Motorsports-Open-Source-ECM)
 ![Stars](https://img.shields.io/github/stars/MykeHaunt/Standalone-Motorsports-Open-Source-ECM?style=social)
 ![Forks](https://img.shields.io/github/forks/MykeHaunt/Standalone-Motorsports-Open-Source-ECM?style=social)
-
-> **WORK IN PROGRESS BY: H. Pandit**
 
 </div>
 
